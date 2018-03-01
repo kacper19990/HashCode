@@ -63,7 +63,7 @@ public class Self_Driving {
 			System.out.println(rides);
 			bonus = Integer.parseInt(initialise[4]);
 			steps = Integer.parseInt(initialise[5]);
-			//set(rows, columns, vehicles, rides, bonus, steps);
+			set(rows, columns, vehicles, rides, bonus, steps);
 			System.out.println(rides);
 			
 			boolean eof = false;
