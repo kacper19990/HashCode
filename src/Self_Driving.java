@@ -24,7 +24,7 @@ public class Self_Driving {
 	public static void Main(String[] args) {
 		Self_Driving selfDriving = new Self_Driving();
 		selfDriving.readFile("src/temp");
-
+		selfDriving.run();
 	}
 
 	public Self_Driving() {
@@ -109,6 +109,8 @@ public class Self_Driving {
 		if(tripList.size() == 0)
 			finished = true;
 		}
-
+		for(Car car : carList) {
+			System.out.println(car.toString());
+		}
 	}
 }

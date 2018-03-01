@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Car {
 	public int origin = 0;
@@ -5,11 +6,14 @@ public class Car {
 	public int destinationColumn;
 	public int currentColumn;
 	public int currentRow;
+	//private int numOfTrips;
+	private ArrayList<Integer> trips;
 	Trip currentTrip = null;
 
 	public Car() {
 		currentRow = origin;
 		currentColumn = origin;
+		trips = new ArrayList<Integer>();
 	}
 
 	public boolean hasTrip() {
@@ -19,6 +23,10 @@ public class Car {
 		return true;
 	}
 
+	public void addTrip(int tripNo) {
+		trips.add(tripNo);
+	}
+	
 	public boolean tripFinished() {
 		if (this.currentRow == this.destinationRow && this.currentColumn == this.destinationRow) {
 			this.currentTrip = null;
@@ -107,4 +115,11 @@ public class Car {
 		}
 	}
 
+	public String toString() {
+		String tripString = "";
+		for(int trip : trips) {
+			tripString += trip + " ";
+		}
+		return trips.size() + " " + tripString;
+	}
 }
