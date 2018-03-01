@@ -53,7 +53,7 @@ public class Self_Driving {
 		int bonus;
 		int steps;
 
-		try (BufferedReader br = new BufferedReader(new FileReader("H:\\Eclipse\\HashCode\\src\\a_example.in"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(source))) {
 			String first = br.readLine();
 			String[] initialise = first.split(SEPARATOR);
 			rows = Integer.parseInt(initialise[0]);
