@@ -100,6 +100,7 @@ public class Car {
 				if(currentTrip.getTimeToFinish() <= 0) {
 					currentColumn = currentTrip.getEndColumn();
 					currentRow = currentTrip.getEndRow();
+					currentTrip.setFinished(true);
 					currentTrip = null;
 				}
 			}

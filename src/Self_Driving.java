@@ -11,14 +11,38 @@ public class Self_Driving {
     private static int END_COLUMN = 3;
     private static int EARLIEST_START = 4;
     private static int LATEST_FINISH = 5;
+    
+    private ArrayList<Trip> tripList;
+    private int rows;
+    private int columns;
+    private int vehicles;
+    private int rides;
+    private int bonus;
+    private int steps;
 
     public static void Main(String[] args) {
-
+    	Self_Driving selfDriving = new Self_Driving();
+    	selfDriving.readFile("src/temp");
+    	
+    	
+    }
+    
+    public Self_Driving() {
+    	tripList = new ArrayList<Trip>();
     }
 
+    public void set(int rows, int columns, int vehicles, int rides, int bonus, int steps) {
+    	this.rows = rows;
+    	this.columns = columns;
+    	this.vehicles = vehicles;
+    	this.rides = rides;
+    	this.bonus = bonus;
+    	this.steps = steps;
+    }
+    
     public void readFile(String source){
         Trip trip = new Trip();
-        ArrayList<Trip> trips = new ArrayList<Trip>();
+       // ArrayList<Trip> trips = new ArrayList<Trip>();
         int rows;
         int columns;
         int vehicles;
@@ -36,6 +60,7 @@ public class Self_Driving {
             rides = Integer.parseInt(initialise[3]);
             bonus = Integer.parseInt(initialise[4]);
             steps = Integer.parseInt(initialise[5]);
+            set(rows, columns, vehicles, rides, bonus, steps);
 
             boolean eof = false;
             while (!eof) {
@@ -48,12 +73,22 @@ public class Self_Driving {
                     int endC = Integer.parseInt(tripe[END_COLUMN]);
                     int earlyS = Integer.parseInt(tripe[EARLIEST_START]);
                     int latestF = Integer.parseInt(tripe[LATEST_FINISH]);
-                    trips.add(new Trip(startR, startC, endR, endC, earlyS, latestF));
+                    tripList.add(new Trip(startR, startC, endR, endC, earlyS, latestF));
 
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+       // return trips;
+        
+    }
+    
+    public void run() {
+    	boolean finished = false;
+    	while(!finished) {
+    		
+    	}
+    
     }
 }
