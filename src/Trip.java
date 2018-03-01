@@ -1,6 +1,7 @@
 public class Trip {
 	private boolean isValid;
 	private boolean hasStarted;
+	private boolean isFinished;
 	private int startRow;
 	private int startColumn;
 	private int endRow;
@@ -109,5 +110,12 @@ public class Trip {
 		return false;
 	}
 	
+	public boolean isFinished() {
+		return isFinished;
+	}
+
+	public void setFinished(boolean isFinished) {
+		this.isFinished = isFinished;
+	}
 	
 }
