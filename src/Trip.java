@@ -1,18 +1,24 @@
 public class Trip {
+	private boolean isValid;
+	private boolean hasStarted;
 	private int startRow;
 	private int startColumn;
 	private int endRow;
 	private int endColumn;
 	private int earliestStart;
 	private int latestFinish;
+	private int timeToFinish;
 
 	public Trip(int startRow, int startColumn, int endRow, int endColumn, int earliestStart, int latestFinish) {
+		isValid = true;
+		hasStarted = false;
 		this.startRow = startRow;
 		this.startColumn = startColumn;
 		this.endRow = endRow;
 		this.endColumn = endColumn;
 		this.earliestStart = earliestStart;
 		this.latestFinish = latestFinish;
+		timeToFinish = timeToFinish();
 	}
 	
 	public int getStartRow() {
@@ -64,10 +70,33 @@ public class Trip {
 	}
 	
 	public int distanceToStart(Car theCar) {
-		return Math.abs(theCar.getRow() - startRow) + Math.abs(theCar.getColumn() - startColumn);
+		return Math.abs(theCar.getCurrentRow() - startRow) + Math.abs(theCar.getCurrentColumn() - startColumn);
 	}
 	
-	public int distanceToFinish(Car theCar) {
-		return Math.abs(theCar.getRow() - endRow) + Math.abs(theCar.getColumn() - endColumn);
+	public int timeToFinish() {
+		return Math.abs(startRow - endRow) + Math.abs(startColumn - endColumn);
 	}
+
+	public boolean isValid() {
+		return isValid;
+	}
+
+	public void setValid(boolean isValid) {
+		this.isValid = isValid;
+	}
+
+	public boolean isHasStarted() {
+		return hasStarted;
+	}
+
+	public void setHasStarted(boolean hasStarted) {
+		this.hasStarted = hasStarted;
+	}
+
+	public int getTimeToFinish() {
+		return timeToFinish;
+	}
+
+	
+	
 }
