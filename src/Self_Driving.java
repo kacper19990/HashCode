@@ -91,7 +91,9 @@ public class Self_Driving {
     public void run() {
     	boolean finished = false;
     	while(!finished) {
-    		
+    		for(Trip trip : tripList) {
+    			
+    		}
     	}
     
     }
