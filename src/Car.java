@@ -1,8 +1,18 @@
-<<<<<<< HEAD
 
 public class Car {
+	public int origin = 0;
+	public int destinationRow;
+	public int destinationColumn;
+	public int carDestinationX;
+	public int carDestinationY;
+	public Car() {
+		carDestinationX = origin;
+		carDestinationY = origin;
+	}
+	
+	public void destination(int x, int y) {
+		this.destinationRow = y;
+		this.destinationColumn = x;
+	}
 
-=======
-public class Car {
->>>>>>> 18786d7e44b9b7d666e1d4193d0be3095177dec2
 }
