@@ -21,11 +21,11 @@ public class Self_Driving {
 	private int steps;
 	private ArrayList<Car> carList;
 
-	public static void Main(String[] args) {
-		Self_Driving selfDriving = new Self_Driving();
-		selfDriving.readFile("src/temp");
-		selfDriving.run();
-	}
+//	public static void Main(String[] args) {
+//		Self_Driving selfDriving = new Self_Driving();
+//		selfDriving.readFile("src/temp");
+//		selfDriving.run();
+//	}
 
 	public Self_Driving() {
 		tripList = new ArrayList<Trip>();
@@ -53,7 +53,7 @@ public class Self_Driving {
 		int bonus;
 		int steps;
 
-		try (BufferedReader br = new BufferedReader(new FileReader("src/a_example.in"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader("H:\\Eclipse\\HashCode\\src\\a_example.in"))) {
 			String first = br.readLine();
 			String[] initialise = first.split(SEPARATOR);
 			rows = Integer.parseInt(initialise[0]);
@@ -67,6 +67,7 @@ public class Self_Driving {
 			boolean eof = false;
 			while (!eof) {
 				String car = br.readLine();
+				if(car != null) {
 				for (int i = 0; i < rides; i++) {
 					String[] tripe = car.split(SEPARATOR);
 					int startR = Integer.parseInt(tripe[START_ROW]);
@@ -76,7 +77,9 @@ public class Self_Driving {
 					int earlyS = Integer.parseInt(tripe[EARLIEST_START]);
 					int latestF = Integer.parseInt(tripe[LATEST_FINISH]);
 					tripList.add(new Trip(startR, startC, endR, endC, earlyS, latestF));
-
+				}
+				}else {
+					eof = true;
 				}
 			}
 		} catch (IOException e) {
