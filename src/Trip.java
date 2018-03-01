@@ -96,7 +96,12 @@ public class Trip {
 	public int getTimeToFinish() {
 		return timeToFinish;
 	}
-
+	
+	public boolean canFinishOnTime(Car theCar, int currentTime) {
+		if(distanceToStart(theCar) + timeToFinish <= latestFinish)
+			return true;
+		return false;
+	}
 	
 	
 }
