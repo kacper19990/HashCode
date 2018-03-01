@@ -96,7 +96,18 @@ public class Trip {
 	public int getTimeToFinish() {
 		return timeToFinish;
 	}
-
+	
+	public boolean canFinishOnTime(Car theCar, int currentTime) { //Returns if the current car can finish the trip on time.
+		if(distanceToStart(theCar) + timeToFinish + currentTime <= latestFinish)
+			return true;
+		return false;
+	}
+	
+	public boolean canStartOnTime(Car theCar, int currentTime) {//Returns if the current car can start the trip on time.
+		if(distanceToStart(theCar) + currentTime >= earliestStart)
+			return true;
+		return false;
+	}
 	
 	
 }

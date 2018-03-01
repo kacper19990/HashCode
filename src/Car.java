@@ -10,6 +10,7 @@ public class Car {
 		currentRow = origin;
 		currentColumn = origin;
 	}
+	
 	public boolean hasTrip() {
 		if(this.currentTrip == null) {
 			return false;
