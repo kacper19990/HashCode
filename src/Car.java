@@ -75,20 +75,4 @@ public class Car {
 		this.destinationColumn = destinationColumn;
 	}
 
-	public int getCarDestinationX() {
-		return currentRow;
-	}
-
-	public void setCarDestinationX(int carDestinationX) {
-		this.currentRow = carDestinationX;
-	}
-
-	public int getCarDestinationY() {
-		return currentColumn;
-	}
-
-	public void setCarDestinationY(int carDestinationY) {
-		this.currentColumn = carDestinationY;
-	}
-
 }
