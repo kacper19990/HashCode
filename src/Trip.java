@@ -62,4 +62,12 @@ public class Trip {
 	public void setLatestFinish(int latestFinish) {
 		this.latestFinish = latestFinish;
 	}
+	
+	public int distanceToStart(Car theCar) {
+		return Math.abs(theCar.getRow() - startRow) + Math.abs(theCar.getColumn() - startColumn);
+	}
+	
+	public int distanceToFinish(Car theCar) {
+		return Math.abs(theCar.getRow() - endRow) + Math.abs(theCar.getColumn() - endColumn);
+	}
 }
