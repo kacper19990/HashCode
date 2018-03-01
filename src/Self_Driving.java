@@ -121,7 +121,7 @@ public class Self_Driving {
 			}
 			if (tripList.size() <= 1)
 				finished = true;
-			if(index > 20000)
+			if(index > steps)
 				finished = true;
 		}
 		
