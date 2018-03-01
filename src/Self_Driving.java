@@ -53,7 +53,7 @@ public class Self_Driving {
 		int bonus;
 		int steps;
 
-		try (BufferedReader br = new BufferedReader(new FileReader("src/temp"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader("src/a_example.in"))) {
 			String first = br.readLine();
 			String[] initialise = first.split(SEPARATOR);
 			rows = Integer.parseInt(initialise[0]);
