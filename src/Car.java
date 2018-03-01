@@ -29,6 +29,12 @@ public class Car {
 		return currentTrip;
 	}
 
+	public int getCurrentColumn() {
+		return currentColumn;
+	}
+	public void setCurrentColumn(int currentColumn) {
+		this.currentColumn = currentColumn;
+	}
 	public void setCurrentTrip(Trip currentTrip) {
 		this.currentTrip = currentTrip;
 	}
