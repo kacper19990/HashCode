@@ -6,25 +6,27 @@ public class Car {
 	public int currentColumn;
 	public int currentRow;
 	Trip currentTrip = null;
+
 	public Car() {
 		currentRow = origin;
 		currentColumn = origin;
 	}
-	
+
 	public boolean hasTrip() {
-		if(tripFinished()) {
+		if (tripFinished()) {
 			return false;
 		}
 		return true;
 	}
+
 	public boolean tripFinished() {
-		if(this.currentRow == this.destinationRow && this.currentColumn == this.destinationRow) {
+		if (this.currentRow == this.destinationRow && this.currentColumn == this.destinationRow) {
 			this.currentTrip = null;
 			return true;
 		}
 		return false;
 	}
-	
+
 	public int getCurrentRow() {
 		return currentRow;
 	}
@@ -40,9 +42,11 @@ public class Car {
 	public int getCurrentColumn() {
 		return currentColumn;
 	}
+
 	public void setCurrentColumn(int currentColumn) {
 		this.currentColumn = currentColumn;
 	}
+
 	public void setCurrentTrip(Trip currentTrip) {
 		this.currentTrip = currentTrip;
 	}
@@ -51,12 +55,11 @@ public class Car {
 		this.destinationRow = y;
 		this.destinationColumn = x;
 	}
-	
+
 	public void changeTrip(Trip carTrip) {
 		this.currentTrip = carTrip;
-		destination(this.currentTrip.getEndColumn(),this.currentTrip.getEndRow());
+		destination(this.currentTrip.getEndColumn(), this.currentTrip.getEndRow());
 	}
-	
 
 	public int getOrigin() {
 		return origin;
@@ -81,14 +84,24 @@ public class Car {
 	public void setDestinationColumn(int destinationColumn) {
 		this.destinationColumn = destinationColumn;
 	}
-	
+
 	public void move() {
-		if(currentTrip != null) {
-			if(!currentTrip.isHasStarted()) {
-				if(!currentTrip.hasCar())
-					currentTrip.setDistToStart(distanceToStart(this));
-			}else {
-				
+		if (currentTrip != null) {
+			if (!currentTrip.isHasStarted()) {
+				if (!currentTrip.hasCar()) {
+					currentTrip.setDistToStart(currentTrip.distanceToStart(this));
+					currentTrip.setHasCar(true);
+				}
+				currentTrip.setDistToStart(currentTrip.getDistToStart() - 1);
+				if(currentTrip.getDistToStart() <= 0)
+					currentTrip.setHasStarted(true);
+			} else {
+				currentTrip.setTimeToFinish(currentTrip.getTimeToFinish() - 1);
+				if(currentTrip.getTimeToFinish() <= 0) {
+					currentColumn = currentTrip.getEndColumn();
+					currentRow = currentTrip.getEndRow();
+					currentTrip = null;
+				}
 			}
 		}
 	}
