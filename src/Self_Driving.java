@@ -19,6 +19,7 @@ public class Self_Driving {
     private int rides;
     private int bonus;
     private int steps;
+    private ArrayList<Car> carList;
 
     public static void Main(String[] args) {
     	Self_Driving selfDriving = new Self_Driving();
@@ -29,6 +30,7 @@ public class Self_Driving {
     
     public Self_Driving() {
     	tripList = new ArrayList<Trip>();
+    	carList = new ArrayList<Car>();
     }
 
     public void set(int rows, int columns, int vehicles, int rides, int bonus, int steps) {
@@ -38,6 +40,8 @@ public class Self_Driving {
     	this.rides = rides;
     	this.bonus = bonus;
     	this.steps = steps;
+    	for(int index = 0; index < vehicles; index++)
+    		carList.add(new Car());
     }
     
     public void readFile(String source){
