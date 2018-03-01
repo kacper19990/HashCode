@@ -93,6 +93,8 @@ public class Self_Driving {
 	}
 
 	public void run() {
+		System.out.println(tripList.size());
+		System.out.println(carList.size());
 		boolean finished = false;
 		int tripNum = 0;
 		for (int index = 0; !finished; index++) {
@@ -101,7 +103,7 @@ public class Self_Driving {
 				if (!trip.isFinished()) {
 					for (Car car : carList) {
 						if (car.getCurrentTrip() == null) {
-							if (trip.canFinishOnTime(car, index) && trip.canStartOnTime(car, index)) {
+							if (trip.canFinishOnTime(car, index) && trip.canStartOnTime(car, index) && !trip.hasCar()) {
 								trip.setHasCar(true);
 								car.addTrip(tripNum++);
 								car.setCurrentTrip(trip);
@@ -112,11 +114,14 @@ public class Self_Driving {
 				} else {
 					tripList.remove(trip);
 				}
+				
 			}
 			for (Car car : carList) {
 				car.move();
 			}
 			if (tripList.size() <= 1)
+				finished = true;
+			if(index > 20000)
 				finished = true;
 		}
 		
