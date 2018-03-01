@@ -21,11 +21,11 @@ public class Self_Driving {
 	private int steps;
 	private ArrayList<Car> carList;
 
-//	public static void Main(String[] args) {
-//		Self_Driving selfDriving = new Self_Driving();
-//		selfDriving.readFile("src/temp");
-//		selfDriving.run();
-//	}
+	// public static void Main(String[] args) {
+	// Self_Driving selfDriving = new Self_Driving();
+	// selfDriving.readFile("src/temp");
+	// selfDriving.run();
+	// }
 
 	public Self_Driving() {
 		tripList = new ArrayList<Trip>();
@@ -60,25 +60,28 @@ public class Self_Driving {
 			columns = Integer.parseInt(initialise[1]);
 			vehicles = Integer.parseInt(initialise[2]);
 			rides = Integer.parseInt(initialise[3]);
+			System.out.println(rides);
 			bonus = Integer.parseInt(initialise[4]);
 			steps = Integer.parseInt(initialise[5]);
-			set(rows, columns, vehicles, rides, bonus, steps);
-
+			//set(rows, columns, vehicles, rides, bonus, steps);
+			System.out.println(rides);
+			
 			boolean eof = false;
 			while (!eof) {
 				String car = br.readLine();
-				if(car != null) {
-				for (int i = 0; i < rides; i++) {
-					String[] tripe = car.split(SEPARATOR);
-					int startR = Integer.parseInt(tripe[START_ROW]);
-					int startC = Integer.parseInt(tripe[START_COLUMN]);
-					int endR = Integer.parseInt(tripe[END_ROW]);
-					int endC = Integer.parseInt(tripe[END_COLUMN]);
-					int earlyS = Integer.parseInt(tripe[EARLIEST_START]);
-					int latestF = Integer.parseInt(tripe[LATEST_FINISH]);
-					tripList.add(new Trip(startR, startC, endR, endC, earlyS, latestF));
-				}
-				}else {
+				if (car != null) {
+					//for (int i = 0; i < rides; i++) {
+						String[] tripe = car.split(SEPARATOR);
+						int startR = Integer.parseInt(tripe[START_ROW]);
+						int startC = Integer.parseInt(tripe[START_COLUMN]);
+						int endR = Integer.parseInt(tripe[END_ROW]);
+						int endC = Integer.parseInt(tripe[END_COLUMN]);
+						int earlyS = Integer.parseInt(tripe[EARLIEST_START]);
+						int latestF = Integer.parseInt(tripe[LATEST_FINISH]);
+						tripList.add(new Trip(startR, startC, endR, endC, earlyS, latestF));
+//						System.out.println(tripList.size());
+					//}
+				} else {
 					eof = true;
 				}
 			}
@@ -90,13 +93,16 @@ public class Self_Driving {
 	}
 
 	public void run() {
+		System.out.println(tripList.size());
 		boolean finished = false;
 		for (int index = 0; !finished; index++) {
-			for (Trip trip : tripList) {
+			for (int i = 0; i < tripList.size(); i++) {
+				Trip trip = tripList.get(i);
 				if (!trip.isFinished()) {
 					for (Car car : carList) {
 						if (car.getCurrentTrip() == null) {
 							if (trip.canFinishOnTime(car, index) && trip.canStartOnTime(car, index)) {
+								System.out.println(car.toString());
 								car.setCurrentTrip(trip);
 								break;
 							}
@@ -109,10 +115,12 @@ public class Self_Driving {
 			for (Car car : carList) {
 				car.move();
 			}
-		if(tripList.size() == 0)
-			finished = true;
+			if (tripList.size() <= 1)
+				finished = true;
 		}
-		for(Car car : carList) {
+		for (
+
+		Car car : carList) {
 			System.out.println(car.toString());
 		}
 	}
