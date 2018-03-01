@@ -81,5 +81,16 @@ public class Car {
 	public void setDestinationColumn(int destinationColumn) {
 		this.destinationColumn = destinationColumn;
 	}
+	
+	public void move() {
+		if(currentTrip != null) {
+			if(!currentTrip.isHasStarted()) {
+				if(!currentTrip.hasCar())
+					currentTrip.setDistToStart(distanceToStart(this));
+			}else {
+				
+			}
+		}
+	}
 
 }

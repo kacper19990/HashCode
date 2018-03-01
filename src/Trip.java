@@ -2,6 +2,8 @@ public class Trip {
 	private boolean isValid;
 	private boolean hasStarted;
 	private boolean isFinished;
+	private boolean hasCar;
+	private int distToStart;
 	private int startRow;
 	private int startColumn;
 	private int endRow;
@@ -20,8 +22,32 @@ public class Trip {
 		this.earliestStart = earliestStart;
 		this.latestFinish = latestFinish;
 		timeToFinish = timeToFinish();
+		hasCar = false;
 	}
 	
+	public Trip() {
+	}
+	
+	public boolean hasCar() {
+		return hasCar;
+	}
+
+	public void setHasCar(boolean hasCar) {
+		this.hasCar = hasCar;
+	}
+
+	public int getDistToStart() {
+		return distToStart;
+	}
+
+	public void setDistToStart(int distToStart) {
+		this.distToStart = distToStart;
+	}
+
+	public void setTimeToFinish(int timeToFinish) {
+		this.timeToFinish = timeToFinish;
+	}
+
 	public int getStartRow() {
 		return startRow;
 	}
