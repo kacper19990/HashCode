@@ -12,10 +12,17 @@ public class Car {
 	}
 	
 	public boolean hasTrip() {
-		if(this.currentTrip == null) {
+		if(tripFinished()) {
 			return false;
 		}
 		return true;
+	}
+	public boolean tripFinished() {
+		if(this.currentRow == this.destinationRow && this.currentColumn == this.destinationRow) {
+			this.currentTrip = null;
+			return true;
+		}
+		return false;
 	}
 	
 	public int getCurrentRow() {
