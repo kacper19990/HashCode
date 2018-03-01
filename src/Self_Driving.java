@@ -60,11 +60,11 @@ public class Self_Driving {
 			columns = Integer.parseInt(initialise[1]);
 			vehicles = Integer.parseInt(initialise[2]);
 			rides = Integer.parseInt(initialise[3]);
-			System.out.println(rides);
+
 			bonus = Integer.parseInt(initialise[4]);
 			steps = Integer.parseInt(initialise[5]);
 			set(rows, columns, vehicles, rides, bonus, steps);
-			System.out.println(rides);
+
 			
 			boolean eof = false;
 			while (!eof) {
@@ -93,7 +93,6 @@ public class Self_Driving {
 	}
 
 	public void run() {
-		System.out.println(tripList.size());
 		boolean finished = false;
 		for (int index = 0; !finished; index++) {
 			for (int i = 0; i < tripList.size(); i++) {
@@ -102,7 +101,7 @@ public class Self_Driving {
 					for (Car car : carList) {
 						if (car.getCurrentTrip() == null) {
 							if (trip.canFinishOnTime(car, index) && trip.canStartOnTime(car, index)) {
-								System.out.println(car.toString());
+								car.addTrip(index);
 								car.setCurrentTrip(trip);
 								break;
 							}
@@ -118,9 +117,8 @@ public class Self_Driving {
 			if (tripList.size() <= 1)
 				finished = true;
 		}
-		for (
-
-		Car car : carList) {
+		
+		for(Car car : carList) {
 			System.out.println(car.toString());
 		}
 	}
