@@ -22,6 +22,7 @@ public class Self_Driving {
 
         ArrayList<Trip> trips = new ArrayList<Trip>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/temp"))) {
+            String first = br.readLine();
             boolean eof = false;
             while (!eof) {
                 String car = br.readLine();
