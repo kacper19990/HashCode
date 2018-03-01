@@ -3,12 +3,12 @@ public class Car {
 	public int origin = 0;
 	public int destinationRow;
 	public int destinationColumn;
-	public int carDestinationX;
-	public int carDestinationY;
+	public int currentColumn;
+	public int currenRow;
 	Trip currentTrip;
 	public Car() {
-		carDestinationX = origin;
-		carDestinationY = origin;
+		currenRow = origin;
+		currentColumn = origin;
 	}
 	
 	public void destination(int x, int y) {
@@ -18,7 +18,7 @@ public class Car {
 	
 	public void changeTrip(Trip carTrip) {
 		this.currentTrip = carTrip;
-		
+		destination(this.currentTrip.getEndColumn(),this.currentTrip.getEndRow());
 	}
 	
 
@@ -47,19 +47,19 @@ public class Car {
 	}
 
 	public int getCarDestinationX() {
-		return carDestinationX;
+		return currenRow;
 	}
 
 	public void setCarDestinationX(int carDestinationX) {
-		this.carDestinationX = carDestinationX;
+		this.currenRow = carDestinationX;
 	}
 
 	public int getCarDestinationY() {
-		return carDestinationY;
+		return currentColumn;
 	}
 
 	public void setCarDestinationY(int carDestinationY) {
-		this.carDestinationY = carDestinationY;
+		this.currentColumn = carDestinationY;
 	}
 
 }
