@@ -94,6 +94,7 @@ public class Self_Driving {
 
 	public void run() {
 		boolean finished = false;
+		int tripNum = 0;
 		for (int index = 0; !finished; index++) {
 			for (int i = 0; i < tripList.size(); i++) {
 				Trip trip = tripList.get(i);
@@ -101,7 +102,8 @@ public class Self_Driving {
 					for (Car car : carList) {
 						if (car.getCurrentTrip() == null) {
 							if (trip.canFinishOnTime(car, index) && trip.canStartOnTime(car, index)) {
-								car.addTrip(index);
+								trip.setHasCar(true);
+								car.addTrip(tripNum++);
 								car.setCurrentTrip(trip);
 								break;
 							}
