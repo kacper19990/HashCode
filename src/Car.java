@@ -4,13 +4,35 @@ public class Car {
 	public int destinationRow;
 	public int destinationColumn;
 	public int currentColumn;
-	public int currenRow;
-	Trip currentTrip;
+	public int currentRow;
+	Trip currentTrip = null;
 	public Car() {
-		currenRow = origin;
+		currentRow = origin;
 		currentColumn = origin;
 	}
+	public boolean hasTrip() {
+		if(this.currentTrip == null) {
+			return false;
+		}
+		return true;
+	}
 	
+	public int getCurrentRow() {
+		return currentRow;
+	}
+
+	public void setCurrentRow(int currentRow) {
+		this.currentRow = currentRow;
+	}
+
+	public Trip getCurrentTrip() {
+		return currentTrip;
+	}
+
+	public void setCurrentTrip(Trip currentTrip) {
+		this.currentTrip = currentTrip;
+	}
+
 	public void destination(int x, int y) {
 		this.destinationRow = y;
 		this.destinationColumn = x;
@@ -47,11 +69,11 @@ public class Car {
 	}
 
 	public int getCarDestinationX() {
-		return currenRow;
+		return currentRow;
 	}
 
 	public void setCarDestinationX(int carDestinationX) {
-		this.currenRow = carDestinationX;
+		this.currentRow = carDestinationX;
 	}
 
 	public int getCarDestinationY() {
