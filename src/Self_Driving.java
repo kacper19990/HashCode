@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -98,6 +100,8 @@ public class Self_Driving {
 		boolean finished = false;
 		int tripNum = 0;
 		for (int index = 0; !finished; index++) {
+//			if( )
+			//System.out.println(steps + " : " + index);
 			for (int i = 0; i < tripList.size(); i++) {
 				Trip trip = tripList.get(i);
 				if (!trip.isFinished()) {
@@ -126,7 +130,18 @@ public class Self_Driving {
 		}
 		
 		for(Car car : carList) {
+			
 			System.out.println(car.toString());
 		}
 	}
+	
+	public void writeToFile() 
+			  throws IOException {
+			    BufferedWriter writer = new BufferedWriter(new FileWriter("src/hashCode3.txt", true));
+			    for(Car car : carList) {
+			    	writer.append(car.toString());
+			    	writer.append("\n");
+			    }
+			    writer.close();
+			}
 }
